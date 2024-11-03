@@ -1,0 +1,19 @@
+<div class="d-flex flex-column gap-3">
+  <app-header (createNewSnippet)="newSnippet.set(true)"></app-header>
+  <app-tags [tags]="[
+  {name: 'one'},
+  {name: 'two'},
+  {name: 'three'}]"></app-tags>
+</div>
+
+<div class="mt-3 d-flex justify-content-between">
+  <div class=" d-inline-flex flex-wrap gap-3 align-items-start">
+    @for (snippet of snippets; track snippet) {
+      <app-single-snippet [snippet]="snippet"></app-single-snippet>
+    }
+  </div>
+
+  @if(newSnippet()) {
+    <app-snippet-setup (createNewSnippet)="newSnippet.set($event)"></app-snippet-setup>
+  }
+</div>

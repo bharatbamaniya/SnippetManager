@@ -1,0 +1,38 @@
+.mat-icon {
+  color: var(--sys-primary);
+}
+
+.snippet-metadata {
+  .snippet-title {
+    input {
+      flex: 1;
+      outline: none;
+      border: none;
+      background-color: transparent;
+      color: var(--sys-primary);
+    }
+  }
+
+  .tags {
+
+  }
+
+  .description-container {
+    .description {
+      flex: 1;
+    }
+  }
+}
+
+.code-block-container {
+  flex: 1;
+
+  .code-block {
+    flex: 1;
+
+    textarea {
+      resize: none;
+      height: 100%;
+    }
+  }
+}

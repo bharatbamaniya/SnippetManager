@@ -1,0 +1,55 @@
+.header {
+  width: 100%;
+  background-color: var(--sys-surface-bright);
+
+  .user-profile-info {
+    flex: 1;
+
+    .user-info {
+      .email {
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  .search-bar-container {
+    flex: 2;
+    background-color: var(--sys-inverse-on-surface);
+
+    .search-bar {
+      .mat-icon {
+        color: var(--sys-primary);
+      }
+
+      .create-note-btn .mat-icon {
+        color: var(--sys-on-primary);
+      }
+
+      .search-input {
+        flex: 1;
+
+        input {
+          width: 100%;
+          outline: none;
+          border: none;
+          background-color: inherit;
+          color: var(--sys-primary);
+        }
+      }
+    }
+  }
+
+  .theme-switch-container {
+    flex: 1;
+
+    button {
+      margin-right: 0.8rem;
+      background-color: var(--sys-inverse-on-surface);
+    }
+
+    button:hover .mat-icon{
+      color: var(--sys-primary);
+    }
+  }
+}
+

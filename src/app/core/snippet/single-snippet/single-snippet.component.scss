@@ -1,0 +1,20 @@
+.note {
+  max-width: 600px;
+  background-color: var(--sys-surface-bright);
+  border-radius: 20px;
+
+  .note-header {
+    .note-title {
+      color: var(--sys-primary);
+    }
+  }
+
+  .code-block-container {
+    .code-block-copy {
+      cursor: pointer;
+      color: var(--sys-primary);
+      top: 5px;
+      right: 10px;
+    }
+  }
+}

@@ -1,0 +1,41 @@
+<div class="p-3 rounded-5" style="width: 600px; background-color: var(--sys-surface-bright)">
+<!--  <h4 mat-dialog-title>New Snippet</h4>-->
+  <div class="d-flex flex-column row-gap-4">
+    <div class="snippet-metadata d-flex flex-column row-gap-4">
+      <div class="snippet-title d-flex align-items-center">
+        <mat-icon>title</mat-icon>
+        <input type="text" class="mx-3 fs-4 fw-bold" placeholder="New Title...">
+      </div>
+
+      <div class="tags d-flex flex-wrap align-items-center">
+        <mat-icon>style</mat-icon>
+        <mat-chip-set>
+          <div class="tag-chips mx-3">
+            @for (tag of []; track tag) {
+            } @empty {
+              <mat-chip>No Tags</mat-chip>
+            }
+          </div>
+        </mat-chip-set>
+        <mat-icon class="tag-dropdown-trigger">edit</mat-icon>
+      </div>
+
+      <div class="description-container d-flex flex-wrap align-items-start">
+        <mat-icon>description</mat-icon>
+        <mat-form-field class="description mx-3">
+          <textarea matInput placeholder="New Description"></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="code-block-container d-flex align-items-start">
+      <mat-icon>code</mat-icon>
+      <mat-form-field class="code-block mx-3">
+        <textarea rows="15" matInput placeholder="Your code..."></textarea>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="mt-3">
+    <button mat-button (click)="createNewSnippet.emit(false)">Cancel</button>
+    <button mat-button (click)="createNewSnippet.emit(true)">Add Snippet</button>
+  </div>
+</div>
