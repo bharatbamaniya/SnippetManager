@@ -18,7 +18,7 @@
   <div class="note-description poppins-light my-1" style="font-size: small">{{ snippet().description }}</div>
 
   <div class="code-block-container my-1 position-relative">
-    @if (snippet().code.length > 0) {
+    @if (snippet().code && snippet().code.length > 0) {
       <mat-icon class="code-block-copy position-absolute mat-elevation-z0" (click)="clickToCopyCode(snippet())">content_copy</mat-icon>
     }
     <pre><code style="max-height: 16rem; overflow-y: scroll" [highlightAuto]="snippet().code || ''"></code></pre>
@@ -27,7 +27,7 @@
   <div class="note-footer d-flex justify-content-between" style="font-size: small; color: var(--sys-secondary)">
     <div class="note-date d-flex gap-1 align-items-center">
       <mat-icon>bookmark</mat-icon>
-      <span class="poppins-light" style="font-size: small">{{ snippet().timestamp | formatDate }}</span>
+      <span class="poppins-light" style="font-size: small">{{ snippet().createdAt | formatDate }}</span>
     </div>
     <mat-icon style="cursor: pointer; color: var(--sys-error)" (click)="onDelete()">delete</mat-icon>
   </div>

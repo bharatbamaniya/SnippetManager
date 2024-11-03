@@ -6,7 +6,7 @@ import {Pipe, PipeTransform} from '@angular/core';
 })
 export class FormatDatePipe implements PipeTransform {
 
-  transform(value: number | null): number | null | string {
+  transform(value: number | undefined | null): number | undefined | null | string {
     try {
       if (value) {
         return new Date(value).toLocaleString('en-In', {dateStyle: "medium", timeStyle: "short"});

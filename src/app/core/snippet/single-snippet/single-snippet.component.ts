@@ -19,7 +19,7 @@ export interface Vegetable {
 
 export interface Snippet {
   title: string;
-  timestamp: number;
+  createdAt?: number;
   tags?: string[];
   description?: string;
   code: string;
@@ -59,7 +59,7 @@ export class SingleSnippetComponent {
   }
 
   clickToCopyCode(snippet: Snippet) {
-    this.clipboard.copy(snippet.code);
+    this.clipboard.copy(snippet.code || '');
     this.commonService.infoSnackbarCreator('code block copied successfully');
   }
 
