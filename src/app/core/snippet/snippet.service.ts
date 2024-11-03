@@ -18,4 +18,12 @@ export class SnippetService {
   getSnippets() {
     return this.dataService.getData('snippets');
   }
+
+  addToFavoriteSnippet(id: number){
+    return this.dataService.getData('snippets');
+  }
+
+  deleteSnippetById(id: number) {
+    return this.dataService.postData({}, 'snippets/delete/' + id);
+  }
 }

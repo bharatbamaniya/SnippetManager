@@ -29,6 +29,7 @@ export class SnippetSetupComponent {
 
   onAddSnippet() {
     this.snippetService.addSnippet({
+      id: 0,
       title: this.title,
       description: this.description,
       code: this.code,

@@ -1,4 +1,4 @@
-import {Component, inject, input, signal} from '@angular/core';
+import {Component, inject, input, output, signal} from '@angular/core';
 import {MatIcon} from "@angular/material/icon";
 import {Highlight, HighlightAuto} from "ngx-highlightjs";
 import {HighlightLineNumbers} from "ngx-highlightjs/line-numbers";
@@ -12,12 +12,14 @@ import {MatDialog} from "@angular/material/dialog";
 import {FormatDatePipe} from "../../../shared/pipes/format-date.pipe";
 import {Clipboard} from "@angular/cdk/clipboard";
 import {CommonService} from "../../../shared/services/common.service";
+import {SnippetService} from "../snippet.service";
 
 export interface Vegetable {
   name: string;
 }
 
 export interface Snippet {
+  id: number;
   title: string;
   createdAt?: number;
   tags?: string[];
@@ -44,6 +46,7 @@ export interface Snippet {
 export class SingleSnippetComponent {
   readonly dialog = inject(MatDialog);
   readonly clipboard = inject(Clipboard);
+  readonly snippetService = inject(SnippetService);
   readonly commonService = inject(CommonService);
 
   readonly tags = signal<Vegetable[]>([
@@ -53,7 +56,7 @@ export class SingleSnippetComponent {
   ]);
 
   snippet = input.required<Snippet>();
-  favorite = signal<boolean>(false);
+  loadSnippets = output();
 
   constructor() {
   }
@@ -63,8 +66,18 @@ export class SingleSnippetComponent {
     this.commonService.infoSnackbarCreator('code block copied successfully');
   }
 
-  markAsFavorite(snippet: Snippet) {
+  addToFavoriteSnippet() {
     this.snippet().isFavorite = !this.snippet().isFavorite;
+    this.snippetService.addToFavoriteSnippet(this.snippet().id).subscribe({
+      next: () => {
+        this.commonService.successSnackbarCreator('Snippet marked as favorite.');
+      },
+      error: err => {
+        this.commonService.errorSnackbarCreator(err.error.message);
+      },
+      complete: () => {
+      }
+    });
   }
 
   onDelete() {
@@ -83,9 +96,25 @@ export class SingleSnippetComponent {
       autoFocus: "dialog",
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-
+    dialogRef.afterClosed().subscribe((isConfirmed) => {
+      if (isConfirmed === "true") {
+        this.deleteSnippet();
+      }
     });
 
+  }
+
+  deleteSnippet() {
+    this.snippetService.deleteSnippetById(this.snippet().id).subscribe({
+      next: () => {
+        this.commonService.successSnackbarCreator('Snippet deleted.');
+      },
+      error: err => {
+        this.commonService.errorSnackbarCreator(err.error.message);
+      },
+      complete: () => {
+        this.loadSnippets.emit();
+      }
+    });
   }
 }

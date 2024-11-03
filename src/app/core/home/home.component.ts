@@ -32,54 +32,6 @@ export class HomeComponent implements OnInit {
   showLoader = signal(false);
   snippets = signal<Snippet[]>([]);
 
-//   snippets: Snippet[] = [{
-//     title: 'Loren ipsum dolor sit amet. Non unde natus',
-//     timestamp: Date.now(),
-//     tags: ['javascript', 'nodejs'],
-//     description: 'Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, . Lorem ipsum dolor sit amet, ,' +
-//       'Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet',
-//     code: "import { HighlightPlusModule } from 'ngx-highlightjs';\n@Component({\n  standalone: true,\n  selector: 'app-root',\n  template: \n  `,\n  imports: [HighlightPlusModule, CommonModule]\n})\nexport class AppComponent {\n}",
-//     isFavorite: false,
-//   }, {
-//     title: 'Loren ipsum dolor sit amet. Non unde natus',
-//     timestamp: Date.now(),
-//     tags: ['javascript', 'nodejs'],
-//     description: 'Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, . Lorem ipsum dolor sit amet, ,' +
-//       'Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet',
-//     code: `import { HighlightPlusModule } from 'ngx-highlightjs';
-// export class AppComponent {
-// }`,
-//     isFavorite: false,
-//   }, {
-//     title: 'Loren ipsum dolor sit amet. Non unde natus',
-//     timestamp: Date.now(),
-//     tags: ['javascript', 'nodejs'],
-//     description: 'Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, . Lorem ipsum dolor sit amet, ,' +
-//       'Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet',
-//     code: `import { HighlightPlusModule } from 'ngx-highlightjs';
-// export class AppComponent {
-// }`,
-//     isFavorite: false,
-//   }, {
-//     title: 'Loren ipsum dolor sit amet. Non unde natus',
-//     timestamp: Date.now(),
-//     tags: ['javascript', 'nodejs'],
-//     description: 'Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, . Lorem ipsum dolor sit amet, ,' +
-//       'Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet',
-//     code: `import { HighlightPlusModule } from 'ngx-highlightjs';
-//
-// @Component({
-//   standalone: true,
-//   selector: 'app-root',
-//   template: \`
-//   \`,
-//   imports: [HighlightPlusModule, CommonModule]
-// })
-// export class AppComponent {
-// }`,
-//     isFavorite: false,
-//   },]
-
   ngOnInit() {
     this.getSnippets();
   }
@@ -92,6 +44,7 @@ export class HomeComponent implements OnInit {
       },
       error: (err) => {
         this.commonService.errorSnackbarCreator(err.error.message);
+        this.showLoader.set(false);
       },
       complete: () => {
         this.showLoader.set(false);

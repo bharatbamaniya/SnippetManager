@@ -16,7 +16,7 @@ export type ConfirmationDialogData = {
     standalone: true,
     imports: [MatDialogModule, MatButton, NgStyle, NgClass],
     template: `
-      <section class="width-650">
+      <section class="width-650" style="background-color: var(--sys-surface-bright);">
         <h4 mat-dialog-title class="color-dark-primary text-center mb-2">Are you sure you want to {{ data.forAction ?? "proceed" }}</h4>
         @if (data.consequences) {
           <mat-dialog-content class="overflow-hidden mat-typography width-650">

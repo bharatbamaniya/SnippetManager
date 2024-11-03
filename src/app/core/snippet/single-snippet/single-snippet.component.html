@@ -3,7 +3,7 @@
     <span class="note-title fw-bold fs-5 w-75">{{snippet().title}}</span>
 
     <mat-icon style="cursor: pointer; color: var(--sys-tertiary)"
-              (click)="markAsFavorite(snippet())">{{ snippet().isFavorite ? 'favorite' : 'favorite_outlined' }}
+              (click)="addToFavoriteSnippet()">{{ snippet().isFavorite ? 'favorite' : 'favorite_outlined' }}
     </mat-icon>
   </div>
 

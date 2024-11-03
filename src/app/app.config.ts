@@ -14,8 +14,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes), provideAnimationsAsync(),
     provideHighlightOptions({
       lineNumbersLoader: () => import('ngx-highlightjs/line-numbers'),
-      fullLibraryLoader: () => import('highlight.js'),
-      themePath: 'assets/styles/stackoverflow-light.css'
+      fullLibraryLoader: () => import('highlight.js')
     }),
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
